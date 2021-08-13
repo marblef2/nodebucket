@@ -1,3 +1,9 @@
+/**
+ * Date: 11 August 2021
+ * Author: Richard Krasso
+ * Modified: Fred Marble
+ * Description:
+ */
 import { HomeComponent } from './pages/home/home.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { NgModule } from '@angular/core';

@@ -1,3 +1,9 @@
+/**
+ * Date: 11 August 2021
+ * Author: Richard Krasso
+ * Modified: Fred Marble
+ * Description:
+ */
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +12,5 @@ import { Component } from '@angular/core';
   styles: [``]
 })
 export class AppComponent {
-  
+
 }
