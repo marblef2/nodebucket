@@ -2,12 +2,15 @@
  * Date: 11 August 2021
  * Author: Richard Krasso
  * Modified: Fred Marble
- * Description:
+ * Description:Creating the routes for the application.
  */
 import { HomeComponent } from './pages/home/home.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
+import { SigninComponent } from './pages/signin/signin.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +19,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate:[AuthGuard]
+      }
+    ]
+  },
+  {
+    path:'session',
+    component: AuthLayoutComponent,
+    children: [
+      {
+        path: 'signin',
+        component: SigninComponent
       }
     ]
   }
