@@ -25,7 +25,7 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
 
     this.form=this.fb.group({
-      empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9*$')])]
+      empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
     })
 
   }
