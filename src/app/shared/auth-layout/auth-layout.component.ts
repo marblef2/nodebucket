@@ -2,7 +2,7 @@
  * Date: 11 August 2021
  * Author: Richard Krasso
  * Modified: Fred Marble
- * Description:
+ * Description: Auth Layout for authorization to the application.
  */
 import { Component, OnInit } from '@angular/core';
 

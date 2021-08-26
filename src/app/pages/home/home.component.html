@@ -1,4 +1,5 @@
 <div fxLayout="column" class="main-welcome">
+  <div fxFlex>
     <h1 class="title">
       Welcome to WEB 450's - nodebucket Project <br />
       <span class="subtitle">
@@ -6,4 +7,74 @@
       </span>
     </h1>
   </div>
-  
+  <div fxFlex>
+    <div class="task-container" fxLayout="column">
+      <button mat-flat-button color="primary" (click)="openCreateTaskDialog()">Create Task</button>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <div fxLayout="row" fxLayoutGap="15px" class="task-container">
+      <!--Firs Column-->
+      <div fxFlex>
+        <mat-card class="mat-elevation-z0">
+          <mat-card-title>
+            ToDo
+          </mat-card-title>
+          <mat-card-content>
+            <div class="task-column">
+              <div *ngFor="let item of todo">
+                <mat-card class="mat-elevation-z0 task-card">
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex>
+                        {{ item.text}}
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <!--Second Column in the row-->
+      <div fxFlex>
+        <mat-card class="mat-elevation-z0">
+          <mat-card-title>
+            Done
+          </mat-card-title>
+          <mat-card-content>
+            <div class="task-column">
+              <div *ngFor="let item of done">
+                <mat-card class="mat-elevation-z0 task-card">
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <div fxFlex>
+                        {{ item.text}}
+                      </div>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </div>
+
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+</div>

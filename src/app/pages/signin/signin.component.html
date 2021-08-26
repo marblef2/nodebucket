@@ -1,31 +1,47 @@
 <div fxLayout="column">
-
-  <div fxFlex *ngIf="error">
-    {{ error }}
-  </div>
-
-  <mat-card fxFlex>
-    <mat-card-title>
+  <mat-card fxFlex class="signin-conatiner">
+    <mat-card-title class="signin-title">
       Employee Sign-in Page
     </mat-card-title>
 
-    <mat-card-subtitle>
+    <br />
+
+
+    <mat-card-subtitle class="signin-subtitle">
       You must enter a valid employeeId to continue.
     </mat-card-subtitle>
 
-    <!--Sign-in form-->
-    <form [formGroup]="form" (ngSubmit)="logIn(); form.reset();">
-      <mat-card-content>
-        <mat-form-field>
-           <input matInput
-             [formControl]="form.controls['empId']"
-             placeholder="Employee ID"/>
-        </mat-form-field>
-      </mat-card-content>
-      <mat-card-actions>
-        <button type="submit" fxflex mat-raised-button color="primary" [disabled]="!form.valid">Sign-in</button>
-      </mat-card-actions>
-     </form>
+    <mat-card-content>
+      <mat-card class="mat-levation-z0" fxLayout="column" fxLayoutGap="10px">
+          <!--Sign-in form-->
+          <form [formGroup]="form" (ngSubmit)="logIn(); form.reset();">
+            <mat-card-content class="mat-elevation-z0">
+              <mat-form-field>
+                <input matInput
+                  [formControl]="form.controls['empId']"
+                  placeholder="Employee ID"/>
+
+                  <mat-error *ngIf="form.controls['empId'].hasError('required') && form.controls['empId'].touched">
+                    Employee Id Is a required field.
+                  </mat-error>
+
+                  <mat-error *ngIf="form.controls['empId'].hasError('pattern') && form.controls['empId'].touched">
+                    Employee ID must be a numerical value.
+                  </mat-error>
+                  <mat-error *ngIf="error">
+                      {{ error }}
+                  </mat-error>
+              </mat-form-field>
+            </mat-card-content>
+
+            <!--Submit button-->
+            <mat-card-actions>
+              <button type="submit" fxflex mat-raised-button color="primary" [disabled]="!form.valid">Sign-in</button>
+            </mat-card-actions>
+          </form>
+
+      </mat-card>
+    </mat-card-content>
 
   </mat-card>
 

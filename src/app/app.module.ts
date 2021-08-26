@@ -24,6 +24,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CookieService } from 'ngx-cookie-service';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { CookieService } from 'ngx-cookie-service';
     HomeComponent,
     BaseLayoutComponent,
     AuthLayoutComponent,
-    SigninComponent
+    SigninComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,10 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatMenuModule,
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

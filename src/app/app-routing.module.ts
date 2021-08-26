@@ -11,6 +11,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { AuthGuard } from './shared/auth.guard';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -20,9 +21,14 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate:[AuthGuard]
+      },
+      {
+        path: 'contact-us',
+        component: ContactUsComponent
       }
     ],
-    canActivate:[AuthGuard]
+
   },
   {
     path:'session',
@@ -34,7 +40,7 @@ const routes: Routes = [
       }
     ]
   }
-];
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled', relativeLinkResolution: 'legacy' })],

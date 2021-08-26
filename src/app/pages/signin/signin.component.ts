@@ -33,10 +33,11 @@ export class SigninComponent implements OnInit {
   logIn() : void{
     const empId = this.form.controls['empId'].value;
 
-    this.http.get('./api/employees/' +empId).subscribe(res =>{
+    this.http.get('./api/employees/' + empId).subscribe(res =>{
       if (res)
       {
         this.cookieService.set('session_user', empId, 1);
+        this.router.navigate(['/']);
         console.log(res);
       }
 
