@@ -1,3 +1,9 @@
+/**
+ * Date: 25 August 2021
+ * Author: Fred Marble
+ * Modified:
+ * Description:Creation of a task
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -19,11 +25,15 @@ export class CreateTaskDialogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  /**
+   * Create a task function.
+   */
   createTask(){
     this.dialogRef.close(this.taskForm.value);
   }
-
+  /**
+   * Cancel creating a task.
+   */
   cancel(){
     this.dialogRef.close();
   }

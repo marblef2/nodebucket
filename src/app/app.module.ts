@@ -28,6 +28,7 @@ import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { CreateTaskDialogComponent } from './shared/create-task-dialog/create-task-dialog.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatDividerModule } from '@angular/material/divider';
     BaseLayoutComponent,
     AuthLayoutComponent,
     SigninComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    CreateTaskDialogComponent
   ],
   imports: [
     BrowserModule,

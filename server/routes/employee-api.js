@@ -73,7 +73,7 @@ router.get('/:empId/tasks', async(req, res)=>{
 })
 
 /**createTask */
-router.post('/:empId/tasks', async(reg, res)=>{
+router.post('/:empId/tasks', async(req, res)=>{
   try
   {
     Employee.findOne({'empId': req.params.empId}, function(err, employee){
@@ -89,7 +89,7 @@ router.post('/:empId/tasks', async(reg, res)=>{
         console.log(employee);
 
         const newTask={
-          text: reg.body.text
+          text: req.body.text
         };
 
         employee.todo.push(newTask);
