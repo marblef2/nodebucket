@@ -11,6 +11,7 @@ import { TaskService } from '../../shared/services/task.service';
 import { Employee } from '../../shared/models/employee.interface';
 import { Item } from '../../shared/models/item.interface';
 import { CreateTaskDialogComponent } from '../../shared/create-task-dialog/create-task-dialog.component';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-home',
@@ -73,4 +74,57 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  drop(event: CdkDragDrop<[]>)
+  {
+    if(event.previousContainer=== event.container){
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+
+      console.log('Reordered the existing list of task items.');
+
+      this.updateTaskList(this.empId, this.todo, this.done);
+    }
+    else{
+      //transferring items in the two arrays.
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+
+      console.log('Moved Task Item into the other container');
+
+      this.updateTaskList(this.empId, this.todo, this.done);
+    }
+  }
+
+  deleteTask(taskId: string): void{
+    if (confirm('Are you sure you want to delete this task?')){
+      if(taskId){
+        console.log(`Task Item: ${taskId} was deleted`);
+
+        this.taskService.deleteTask(this.empId, taskId).subscribe(res=> {
+          this.employee= res.data;
+        },
+        err =>{
+          console.log(err);
+        },
+        ()=>{
+          this.todo = this.employee.todo;
+          this.done= this.employee.done;
+        })
+      }
+    }
+  }
+  /**
+   *
+   * @param empId
+   * @param todo
+   * @param done
+   */
+  private updateTaskList(empId: number, todo: Item[], done: Item[]): void{
+    this.taskService.updateTask(this.empId, this.todo, this.done).subscribe(res => {
+      this.employee = res.data;
+    }, err =>{
+      console.log(err);
+    }, () =>{
+    this.todo = this.employee.todo;
+    this.done = this.employee.done;
+  })
+  }
 }

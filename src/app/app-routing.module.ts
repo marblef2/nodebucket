@@ -12,6 +12,8 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { SigninComponent } from './pages/signin/signin.component';
 import { AuthGuard } from './shared/auth.guard';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { NotFoundComponent }  from './pages/not-found/not-found.component';
+import { AboutUsComponent }   from './pages/about-us/about-us.component';
 
 const routes: Routes = [
   {
@@ -25,7 +27,13 @@ const routes: Routes = [
       },
       {
         path: 'contact-us',
-        component: ContactUsComponent
+        component: ContactUsComponent,
+        canActivate:[AuthGuard]
+      },
+      {
+        path: 'about-us',
+        component: AboutUsComponent,
+        canActivate:[AuthGuard]
       }
     ],
 
@@ -37,8 +45,16 @@ const routes: Routes = [
       {
         path: 'signin',
         component: SigninComponent
+      },
+      {
+        path: 'not-found',
+        component: NotFoundComponent
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: 'session/not-found'
   }
 ]
 

@@ -36,6 +36,7 @@ export class SigninComponent implements OnInit {
     this.http.get('./api/employees/' + empId).subscribe(res =>{
       if (res)
       {
+        sessionStorage.setItem('name', `${res['firstName']} ${res['lastName']}`);
         this.cookieService.set('session_user', empId, 1);
         this.router.navigate(['/']);
         console.log(res);
